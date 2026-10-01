@@ -263,10 +263,10 @@
       var cx = (rb.px + (rb.x - rb.px) * frac + 0.5) * cell;
       var cy = (rb.py + (rb.y - rb.py) * frac + 0.5) * cell;
       ctx.beginPath();
-      ctx.arc(cx, cy, cell * 0.95, 0, Math.PI * 2);
+      ctx.arc(cx, cy, cell * 0.7, 0, Math.PI * 2);
       ctx.fillStyle = colors['robot'];
       ctx.fill();
-      ctx.lineWidth = Math.max(1.5, cell * 0.22);
+      ctx.lineWidth = Math.max(1.25, cell * 0.18);
       ctx.strokeStyle = colors['surface'];
       ctx.stroke();
     });
