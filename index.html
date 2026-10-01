@@ -41,7 +41,7 @@
       <div class="hero-text">
         <h1>Jeonghyun Lee</h1>
         <p class="lede">I work on reinforcement learning for robots, multi-robot exploration, and the evaluation work that shows whether a model actually got better.</p>
-        <p class="facts">UC Berkeley Data Science, 2023. Based in South Korea, open to roles in Korea and abroad.</p>
+        <p class="facts">UC Berkeley Data Science, December 2023. Based in South Korea, open to roles in Korea and abroad.</p>
         <ul class="links">
           <li><a href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a></li>
           <li><a href="https://github.com/leejh0820">GitHub</a></li>
@@ -327,7 +327,7 @@
         <div class="section-body">
           <ul class="projects">
             <li>
-              <h3>AI daily briefing pipeline</h3>
+              <h3><a href="https://github.com/leejh0820/ai-news-pipeline">AI daily briefing pipeline</a></h3>
               <p>RSS feeds and Gmail newsletters go into one schema, then a FastAPI service normalizes Unicode, strips tracking parameters, keeps the last 48 hours, removes duplicate URLs and near-identical titles, and fits a token budget before Gemini writes an HTML email digest. In a test run, 26 items became 5. Six unit tests cover the preprocessing.</p>
               <p class="stack"><span class="yr">2026</span>Make, Python, FastAPI, Gemini</p>
             </li>
@@ -355,6 +355,11 @@
               <h3><a href="https://github.com/leejh0820/Principles-and-Techniques-of-Data-Science">Housing prices and spam detection</a></h3>
               <p>Cook County price model cut RMSE from about $310k to $255k, with a look at how model choice affects over-assessment of low-value homes. A spam classifier moved past a 75.8% word-feature baseline with symbol-based features.</p>
               <p class="stack"><span class="yr">Data 100</span>pandas, scikit-learn</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Data-Mining-and-Analytics">Breast cancer classification</a></h3>
+              <p>On 569 Wisconsin samples, SMOTE oversampling and a soft-voting ensemble of KNN, SVM, random forest, naive Bayes and a decision tree reached 95% accuracy and 94% recall on malignant cases, the class a model can least afford to miss. PCA for visualizing the feature space.</p>
+              <p class="stack"><span class="yr">Data 144</span>scikit-learn</p>
             </li>
             <li>
               <h3>Route planning web app</h3>
@@ -392,7 +397,7 @@
         <div class="section-body plain-list">
           <div>
             <h3>University of California, Berkeley</h3>
-            <p>B.A. in Data Science, domain in Applied Mathematics and Modeling, 2023.</p>
+            <p>B.A. in Data Science, domain in Applied Mathematics and Modeling, December 2023.</p>
             <p class="stack">Data Structures, Introduction to AI, Machine Learning, Data Engineering, Data Mining and Analytics, Principles and Techniques of Data Science, Linear Algebra, Nonlinear and Discrete Optimization, Signals and Systems</p>
           </div>
           <div>
@@ -407,10 +412,14 @@
       </div>
     </section>
 
-    <section class="contact wrap" id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Get in touch</h2>
-      <p>I'm looking for ML, research engineering and robotics roles. Email is the fastest way to reach me.</p>
-      <a class="big-mail" href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a>
+    <section class="section contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap grid">
+        <h2 id="contact-h" class="section-h">Get in touch</h2>
+        <div class="section-body">
+          <p>I'm looking for ML, research engineering and robotics roles. Email is the fastest way to reach me.</p>
+          <a class="big-mail" href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a>
+        </div>
+      </div>
     </section>
   </main>
 
