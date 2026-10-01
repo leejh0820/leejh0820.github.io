@@ -11,7 +11,7 @@ index.html      page content
 style.css       layout, dark (default) and light themes
 main.js         theme toggle and the frontier-exploration demo in the header
 img/            figures from the ETRI, PPO navigation and HumanoidBench work
-resume/         résumé PDF linked from the header
+resume/         English and Korean résumé PDFs
 fonts/          Schibsted Grotesk (SIL Open Font License, see fonts/OFL.txt)
 ```
 

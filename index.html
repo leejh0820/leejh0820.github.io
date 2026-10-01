@@ -53,19 +53,23 @@
 
   <main id="main">
     <section class="hero wrap" id="top" aria-label="Introduction">
-      <div class="bento">
-        <div class="tile t-intro">
+      <div class="hero-grid">
+        <div class="hero-text">
           <h1>Jeonghyun Lee</h1>
           <p class="lede">ML engineer working on reinforcement learning for robots, multi-robot exploration, and the evaluation work that shows whether a model actually got better.</p>
+          <p class="facts">UC Berkeley Data Science, December 2023. Based in Jeju, South Korea.</p>
           <ul class="links">
-            <li><a class="btn btn-solid" href="resume/JeonghyunLee_Resume_EN.pdf">Download résumé</a></li>
-            <li><a class="btn" href="mailto:jeonghyun@berkeley.edu">Email</a></li>
-            <li><a class="btn" href="https://github.com/leejh0820">GitHub</a></li>
-            <li><a class="btn" href="https://www.linkedin.com/in/jeonghyunlee/">LinkedIn</a></li>
+            <li><a class="btn btn-solid" href="resume/JeonghyunLee_Resume_EN.pdf">Résumé (English)</a></li>
+            <li><a class="btn btn-solid-alt" href="resume/JeonghyunLee_Resume_KO.pdf" lang="ko">이력서 (한국어)</a></li>
+          </ul>
+          <ul class="links links-quiet">
+            <li><a href="mailto:jeonghyun@berkeley.edu">Email</a></li>
+            <li><a href="https://github.com/leejh0820">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/jeonghyunlee/">LinkedIn</a></li>
           </ul>
         </div>
 
-        <figure class="tile t-map explorer" aria-labelledby="explorer-cap">
+        <figure class="explorer" aria-labelledby="explorer-cap">
           <div class="explorer-frame">
             <canvas id="map" role="img" aria-label="An occupancy grid map of a floor plan being filled in as simulated robots explore it."></canvas>
           </div>
@@ -77,31 +81,8 @@
             <output id="coverage" aria-live="off">0% mapped</output>
             <button type="button" class="replay" id="replay">Replay</button>
           </div>
-          <figcaption id="explorer-cap">Frontier exploration on an occupancy grid, re-created in the browser from the setup I built at ETRI. Each robot heads for the nearest edge of the unknown.</figcaption>
+          <figcaption id="explorer-cap">Frontier exploration on an occupancy grid, re-created in the browser from the setup I built at ETRI.</figcaption>
         </figure>
-
-        <div class="tile t-now">
-          <p class="tile-k">Now</p>
-          <p>Designing robotics and multi-robot ML benchmarks for frontier models at Alignerr.</p>
-        </div>
-
-        <div class="tile t-where">
-          <p class="tile-k">Based in</p>
-          <p>Jeju, South Korea. Open to roles in Korea and abroad. Korean native, professional working English.</p>
-        </div>
-
-        <a class="tile t-stat" href="#etri">
-          <span class="stat">51% → 94%</span>
-          <span class="stat-l">5-minute map coverage going from one DQN agent to four, ETRI</span>
-        </a>
-        <a class="tile t-stat" href="#nav">
-          <span class="stat">86.5%</span>
-          <span class="stat-l">PPO success on the hard navigation map, against 0% for the rule-based baseline</span>
-        </a>
-        <a class="tile t-stat" href="#exp-climformatics">
-          <span class="stat">−58.4%</span>
-          <span class="stat-l">Sea-ice thickness prediction error (MSE), Climformatics</span>
-        </a>
       </div>
     </section>
 
