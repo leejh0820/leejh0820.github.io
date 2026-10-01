@@ -1,18 +1,424 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jeonghyun Lee | Portfolio</title>
-    <meta name="description" content="Jeonghyun Lee — Software Engineer, AI/ML, Robotics. UC Berkeley Data Science." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-CtHwi1sv.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-5yyGSR9n.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeonghyun Lee</title>
+  <meta name="description" content="Jeonghyun Lee — ML engineer working on reinforcement learning for robots and on evaluating large language models. UC Berkeley Data Science.">
+  <meta property="og:title" content="Jeonghyun Lee">
+  <meta property="og:description" content="Reinforcement learning for robots, multi-robot exploration, and LLM evaluation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://leejh0820.github.io/">
+  <meta name="theme-color" content="#F2F3F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15181C" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <a class="wordmark" href="#top">Jeonghyun Lee</a>
+      <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-text">
+        <h1>Jeonghyun Lee</h1>
+        <p class="lede">I work on reinforcement learning for robots, multi-robot exploration, and the evaluation work that shows whether a model actually got better.</p>
+        <p class="facts">UC Berkeley Data Science, 2023. Based in South Korea, open to roles in Korea and abroad.</p>
+        <ul class="links">
+          <li><a href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a></li>
+          <li><a href="https://github.com/leejh0820">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jeonghyunlee/">LinkedIn</a></li>
+        </ul>
+      </div>
+
+      <figure class="explorer" aria-labelledby="explorer-cap">
+        <div class="explorer-frame">
+          <canvas id="map" role="img" aria-label="An occupancy grid map of a floor plan being filled in as simulated robots explore it."></canvas>
+        </div>
+        <div class="explorer-controls">
+          <div class="seg" role="radiogroup" aria-label="Number of robots">
+            <button type="button" role="radio" aria-checked="false" data-robots="1">1 robot</button>
+            <button type="button" role="radio" aria-checked="true" data-robots="4">4 robots</button>
+          </div>
+          <output id="coverage" aria-live="off">0% mapped</output>
+          <button type="button" class="replay" id="replay">Replay</button>
+        </div>
+        <figcaption id="explorer-cap">Frontier exploration on an occupancy grid: each robot heads for the nearest edge of the unknown. A small browser re-creation of the setup I built at ETRI.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-h">
+      <div class="wrap grid">
+        <h2 id="work-h" class="section-h">Selected work</h2>
+        <div class="section-body">
+
+          <article class="case" id="etri">
+            <header class="case-head">
+              <h3>Multi-robot SLAM and autonomous exploration</h3>
+              <dl class="meta">
+                <div><dt>Where</dt><dd>ETRI, Visual Intelligence Lab</dd></div>
+                <div><dt>When</dt><dd>Jul – Aug 2023</dd></div>
+                <div><dt>Stack</dt><dd>ROS Melodic, Gazebo, RViz, C++, Python, Keras</dd></div>
+              </dl>
+            </header>
+            <p>Part of the MSIT national R&amp;D project <em>AI Bots collaboration platform and self-organizing AI</em>; I'm listed as a participating researcher in the year-2 interim report (Dec 2023). The goal was to compare sampling-based frontier exploration (RRT) with DQN-based exploration on the same indoor map, with up to four TurtleBot3 robots.</p>
+
+            <figure class="mapgrid" aria-labelledby="mapgrid-cap">
+              <div class="mapgrid-table" role="table" aria-describedby="mapgrid-cap">
+                <div role="row" class="mg-row mg-headrow">
+                  <span role="columnheader" class="mg-corner"></span>
+                  <span role="columnheader">1 min</span><span role="columnheader">5 min</span><span role="columnheader">10 min</span><span role="columnheader">15 min</span>
+                </div>
+                <div role="row" class="mg-row">
+                  <span role="rowheader">RRT, 1 robot</span>
+                  <img role="cell" src="img/etri-rrt1-1.webp" alt="RRT single robot map at 1 minute" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-rrt1-5.webp" alt="at 5 minutes" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-rrt1-10.webp" alt="at 10 minutes" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-rrt1-15.webp" alt="at 15 minutes" loading="lazy" width="480" height="308">
+                </div>
+                <div role="row" class="mg-row">
+                  <span role="rowheader">RRT, 4 robots</span>
+                  <img role="cell" src="img/etri-rrt4-1.webp" alt="RRT four robots merged map at 1 minute" loading="lazy" width="480" height="310">
+                  <img role="cell" src="img/etri-rrt4-5.webp" alt="at 5 minutes" loading="lazy" width="480" height="310">
+                  <img role="cell" src="img/etri-rrt4-10.webp" alt="at 10 minutes" loading="lazy" width="480" height="310">
+                  <img role="cell" src="img/etri-rrt4-15.webp" alt="at 15 minutes" loading="lazy" width="480" height="308">
+                </div>
+                <div role="row" class="mg-row">
+                  <span role="rowheader">DQN, 1 robot</span>
+                  <img role="cell" src="img/etri-dqn1-1.webp" alt="DQN single robot map at 1 minute" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-dqn1-5.webp" alt="at 5 minutes" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-dqn1-10.webp" alt="at 10 minutes" loading="lazy" width="480" height="308">
+                  <img role="cell" src="img/etri-dqn1-15.webp" alt="at 15 minutes" loading="lazy" width="480" height="308">
+                </div>
+              </div>
+              <figcaption id="mapgrid-cap">gmapping output at 1, 5, 10 and 15 minutes, same map and start positions. Four RRT robots cover the most ground earliest because frontiers are split between them. The DQN robot visits its goals in order and recovers the overall layout, but its map edges smear, partly because of a slow map update rate.</figcaption>
+            </figure>
+
+            <div class="two-up">
+              <figure>
+                <img src="img/etri-world.webp" alt="Top-down view of the Gazebo floor plan with four TurtleBot3 robots in the center" loading="lazy" width="701" height="753">
+                <figcaption>The Gazebo world I built, modeled on a prior multi-robot mapping study.</figcaption>
+              </figure>
+              <figure>
+                <img src="img/etri-rviz.webp" alt="RViz view of four robots growing RRT trees across a merged map" loading="lazy" width="889" height="918">
+                <figcaption>RViz: four robots (red) growing RRT trees over the merged map.</figcaption>
+              </figure>
+            </div>
+
+            <h4>What I built</h4>
+            <ul class="ticks">
+              <li>A custom Gazebo world and a four-robot launch setup.</li>
+              <li>Per-robot gmapping, AMCL and move_base under separate namespaces, merged with map_merge from known start poses. The Burger has no camera, so feature-based merging wasn't an option.</li>
+              <li>A Melodic port of RRT_Exploration; read through and modified the C++ frontier detectors and the Python filter and assigner.</li>
+              <li>A redesigned TurtleBot3 DQN environment: LiDAR samples 24 → 360, state size 28 → 364, reward +1500 at the goal and −600 on collision, trained for 3,000 episodes.</li>
+              <li>Two internal talks on ROS, SLAM and navigation, and on RL from MDPs to DQN; final presentation on Aug 30, 2023.</li>
+            </ul>
+
+            <h4>What didn't work</h4>
+            <p>Multi-agent DQN exploration never ran end to end. The four-robot environment and nodes were in place, but loading four networks and four environments into one simulation broke. The fix I'd make is one environment that dispatches commands per robot. The bigger lesson: multi-robot systems fail on topics, TF and namespaces long before they fail on the algorithm, so I now design the environment first.</p>
+          </article>
+
+          <article class="case" id="nav">
+            <header class="case-head">
+              <h3>LiDAR navigation with PPO</h3>
+              <dl class="meta">
+                <div><dt>Where</dt><dd>Personal project</dd></div>
+                <div><dt>When</dt><dd>Jan 2026</dd></div>
+                <div><dt>Stack</dt><dd>Python, Gymnasium, Stable-Baselines3</dd></div>
+                <div><dt>Code</dt><dd><a href="https://github.com/leejh0820/RL-Robot-Navigation">RL-Robot-Navigation</a></dd></div>
+              </dl>
+            </header>
+            <p>Rule-based reactive driving stalls as obstacles pile up. I trained a PPO policy on partial LiDAR observations and compared it against a rule-based baseline on two maps: easy with 8 obstacles, hard with 12.</p>
+
+            <div class="two-up">
+              <figure>
+                <img src="img/nav-ppo.webp" alt="PPO robot path curving around circular obstacles to the goal" loading="lazy" width="380" height="378">
+                <figcaption>PPO on the hard map: routes around the obstacles and reaches the goal.</figcaption>
+              </figure>
+              <figure>
+                <img src="img/nav-baseline.webp" alt="Rule-based robot stopped among obstacles" loading="lazy" width="380" height="378">
+                <figcaption>Rule-based baseline on the same map: brakes and stalls.</figcaption>
+              </figure>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Dynamics</dt><dd>Circular robot, unicycle model, continuous control (v, ω)</dd></div>
+              <div><dt>Observation</dt><dd>16 normalized LiDAR rays, goal position in the robot frame, heading error as sin and cos, previous action</dd></div>
+              <div><dt>Reward</dt><dd>Progress toward the goal, goal bonus, collision penalty, time penalty, penalty on excessive turning</dd></div>
+              <div><dt>Evaluation</dt><dd>250k timesteps; deterministic policy over 200 episodes with fixed seeds</dd></div>
+            </dl>
+
+            <div class="table-wrap">
+              <table>
+                <caption>Results over 200 evaluation episodes</caption>
+                <thead><tr><th scope="col">Map</th><th scope="col">Policy</th><th scope="col">Success</th><th scope="col">Collision</th><th scope="col">Mean steps</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>Easy</td><td>PPO</td><td>90.0%</td><td>0.0%</td><td>61.9</td></tr>
+                  <tr><td>Easy</td><td>Rule-based</td><td>0.5%</td><td>0.0%</td><td>248.8</td></tr>
+                  <tr class="hl"><td>Hard</td><td>PPO</td><td>86.5%</td><td>1.5%</td><td>65.9</td></tr>
+                  <tr><td>Hard</td><td>Rule-based</td><td>0.0%</td><td>0.0%</td><td>250.0</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Reward ablation</h4>
+            <p>Each reward term was removed or weakened and the policy retrained from scratch, then evaluated the same way.</p>
+            <div class="table-wrap">
+              <table class="ab">
+                <caption>Hard map, each setting trained separately</caption>
+                <thead><tr><th scope="col">Reward</th><th scope="col">Success</th><th scope="col">Collision</th><th scope="col">Mean steps</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>Full (chosen)</td><td>84.0%</td><td>0.5%</td><td>71.9</td></tr>
+                  <tr><td>No progress term</td><td>91.5%</td><td>3.5%</td><td>51.7</td></tr>
+                  <tr><td>Weak collision penalty</td><td>90.5%</td><td>7.5%</td><td>43.1</td></tr>
+                  <tr><td>No time penalty</td><td>90.5%</td><td>2.5%</td><td>54.4</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Every ablation raised success but drove more aggressively and collided more. I kept the full reward: for a robot sharing indoor space with people, collision rate matters more than a few points of success. At ETRI I used discrete-action DQN; here the focus was continuous control and building the evaluation myself.</p>
+          </article>
+
+          <article class="case" id="humanoid">
+            <header class="case-head">
+              <h3>Reproducing HumanoidBench</h3>
+              <dl class="meta">
+                <div><dt>Where</dt><dd>ModuLabs Humanoid Robot Lab</dd></div>
+                <div><dt>When</dt><dd>Apr 2026</dd></div>
+                <div><dt>Stack</dt><dd>MuJoCo, Colab A100, Weights &amp; Biases</dd></div>
+                <div><dt>Paper</dt><dd><a href="https://arxiv.org/abs/2403.10506">arXiv:2403.10506</a></dd></div>
+              </dl>
+            </header>
+            <p>I trained SAC, PPO, TD-MPC2 and DreamerV3 on the Unitree H1 walking task (h1-walk) and compared the results with the paper.</p>
+
+            <figure class="wide">
+              <img src="img/humanoid-rollout.webp" alt="Four frames of the simulated H1 humanoid: lying on the ground, kneeling, then standing and walking" loading="lazy" width="1800" height="594">
+              <figcaption>SAC policy rollouts at 0.5M, 1M, 1.5M and 2M steps: from falling over to upright walking.</figcaption>
+            </figure>
+
+            <div class="table-wrap">
+              <table>
+                <caption>h1-walk episode return</caption>
+                <thead><tr><th scope="col">Algorithm</th><th scope="col">Obs / action</th><th scope="col">Seeds</th><th scope="col">My best</th><th scope="col">Paper average</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>DreamerV3</td><td>151D / 61D (paper default)</td><td>1</td><td>854.2</td><td>800.2</td></tr>
+                  <tr><td>TD-MPC2</td><td>51D / 19D</td><td>1</td><td>805.6</td><td>782.0</td></tr>
+                  <tr><td>SAC</td><td>51D / 19D</td><td>3</td><td>575.3</td><td>31.7</td></tr>
+                  <tr><td>PPO</td><td>51D / 19D</td><td>3</td><td>14.6</td><td>near zero</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>The SAC number that didn't make sense</h4>
+            <p>My SAC run scored about 18 times the paper's. Tracing it back, TD-MPC2, SAC and PPO had run on a simplified environment without hands (51D / 19D), while the paper's default includes hands (151D / 61D). The paper's own figure shows walking return changing several-fold with and without hands, so the gap is task difficulty, not the algorithm. Only DreamerV3 is a like-for-like comparison.</p>
+            <p>DreamerV3 peaked at 854 against the paper's 800 average, on a single seed, and its return then fell to 233 late in training. I haven't explained that drop yet. The broader ranking matched the paper: model-based methods ahead of model-free, PPO last.</p>
+
+            <details>
+              <summary>Constraints and next steps</summary>
+              <ul class="ticks">
+                <li>Colab killed sessions it thought were idle during long subprocess runs; a thread that logs every 30 seconds kept them alive.</li>
+                <li>TD-MPC2 crashed when compute quota ran out, with no way to resume, so only seed 0 finished.</li>
+                <li>Each algorithm reports reward differently, so I analyze them separately rather than on one chart.</li>
+                <li>Next: rerun SAC, PPO and TD-MPC2 with hands (151D) for a fair comparison, and add DreamerV3 seeds to get a mean and variance and find the cause of the late drop.</li>
+              </ul>
+            </details>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="exp-h">
+      <div class="wrap grid">
+        <h2 id="exp-h" class="section-h">Experience</h2>
+        <ol class="section-body timeline">
+          <li>
+            <span class="when">May – Aug 2026</span>
+            <div>
+              <h3>Alignerr <span class="role">Software Engineer, Machine Learning (contract)</span></h3>
+              <p>Designed and reviewed ML benchmark tasks in robotics and multi-robot systems for evaluating frontier models: task specifications, evaluation data, reference solutions and scoring methods.</p>
+            </div>
+          </li>
+          <li class="quiet">
+            <span class="when">Sep 2024 – May 2026</span>
+            <div>
+              <h3>Military service <span class="role">Republic of Korea</span></h3>
+            </div>
+          </li>
+          <li>
+            <span class="when">Aug – Sep 2024</span>
+            <div>
+              <h3>Soongsil University <span class="role">Undergraduate researcher</span></h3>
+              <p>Built an event-driven pipeline for lab receipts: a file change in Google Drive or Notion triggers PDF text extraction, the OpenAI API pulls out dates and line items, and an email is drafted and sent. Google Apps Script, JavaScript, Make.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Jan – Aug 2024</span>
+            <div>
+              <h3>Outlier (Scale AI) <span class="role">AI Training Specialist (contract)</span></h3>
+              <p>Evaluated LLM-generated patches against real GitHub issues in Pandas, Koalas and PySpark, checking type compatibility, indexing behavior, edge cases and regression risk, then ranked responses with structured rubrics and written rationale.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Jul – Aug 2023</span>
+            <div>
+              <h3>ETRI <span class="role">Research intern, Visual Intelligence Lab</span></h3>
+              <p>Multi-robot SLAM and exploration with RRT and DQN. <a href="#etri">Details above.</a></p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Sep – Dec 2022</span>
+            <div>
+              <h3>Climformatics <span class="role">Machine Learning Engineer intern</span></h3>
+              <p>Built a preprocessing pipeline for multidimensional NCAR CESM2 NetCDF data on the Sabalcore Linux HPC cluster, ran NCAR AMWG diagnostics on 11 Beaufort Gyre historical ensembles against observations, and derived sea-ice area, volume and albedo from grid area. Presented at the UC Berkeley Discovery Symposium, Dec 2022.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Jan – May 2022</span>
+            <div>
+              <h3>UC Berkeley D-Lab <span class="role">Software Engineer</span></h3>
+              <p>Processed about 15,000 Sumerian texts and 595,000 lemma-level records from ORACC, BDTNS and CDLI; wrote rule-based extraction for people's occupations, transaction roles and family relations; mapped each database's metadata to FactGrid and Wikidata property IDs for a linked open data graph.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="community" aria-labelledby="com-h">
+      <div class="wrap grid">
+        <h2 id="com-h" class="section-h">Open source and study</h2>
+        <ul class="section-body plain-list">
+          <li>
+            <h3>Humanoid robot RL study, ModuLabs</h3>
+            <p>Theory and recent papers on humanoid reinforcement learning, MuJoCo practice, and the HumanoidBench reproduction above.</p>
+          </li>
+          <li>
+            <h3><a href="https://wikidocs.net/book/18009">Humanoid Robot for Everyone</a></h3>
+            <p>Co-author of a Korean-language Isaac Lab tutorial on WikiDocs.</p>
+          </li>
+          <li>
+            <h3>awesome-humanoid-robot-learning</h3>
+            <p>Contributor to an open-source paper list on humanoid robot learning.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="proj-h">
+      <div class="wrap grid">
+        <h2 id="proj-h" class="section-h">Other projects</h2>
+        <div class="section-body">
+          <ul class="projects">
+            <li>
+              <h3>AI daily briefing pipeline</h3>
+              <p>RSS feeds and Gmail newsletters go into one schema, then a FastAPI service normalizes Unicode, strips tracking parameters, keeps the last 48 hours, removes duplicate URLs and near-identical titles, and fits a token budget before Gemini writes an HTML email digest. In a test run, 26 items became 5. Six unit tests cover the preprocessing.</p>
+              <p class="stack"><span class="yr">2026</span>Make, Python, FastAPI, Gemini</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/korean-sentiment-analysis">Korean restaurant review sentiment</a></h3>
+              <p>TF-IDF with logistic regression, then BiLSTM, then fine-tuned KLUE-BERT on KR3 reviews. BERT reached 91.5% accuracy and 0.915 macro F1; negative-review recall was 0.86 against 0.57 and 0.66 for the baselines, which looked fine on accuracy alone.</p>
+              <p class="stack"><span class="yr">2025</span>PyTorch, Hugging Face Transformers</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/recruit-tracker-web">Recruit Tracker</a></h3>
+              <p>Paste a job URL and it extracts the company, role, location and source, splits the posting into duties and requirements, and tracks the application through a dashboard with CSV export and duplicate warnings. A <a href="https://github.com/leejh0820/recruit-tracker">Chrome extension</a> captures postings from LinkedIn, Remember, Wanted and Saramin.</p>
+              <p class="stack"><span class="yr">2026</span>Next.js, TypeScript, FastAPI, SQLite</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Data-Engineering">Building sensor data pipeline</a></h3>
+              <p>About 500,000 rows of UC Berkeley building telemetry: Hampel X84 outlier detection, interpolation of missing intervals, pg_trgm matching of inconsistent sensor names, and queries over a Brick ontology. The same course included query-plan profiling on the Lahman baseball database.</p>
+              <p class="stack"><span class="yr">Data 101</span>PostgreSQL, Python, MongoDB</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Introduction-to-Artificial-Intelligence">Pac-Man agents</a></h3>
+              <p>Search with hand-designed admissible heuristics, minimax and expectimax, value iteration and Q-learning, and particle filters that track ghosts from noisy distance readings, the same idea behind AMCL.</p>
+              <p class="stack"><span class="yr">CS 188</span>Python</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Principles-and-Techniques-of-Data-Science">Housing prices and spam detection</a></h3>
+              <p>Cook County price model cut RMSE from about $310k to $255k, with a look at how model choice affects over-assessment of low-value homes. A spam classifier moved past a 75.8% word-feature baseline with symbol-based features.</p>
+              <p class="stack"><span class="yr">Data 100</span>pandas, scikit-learn</p>
+            </li>
+            <li>
+              <h3>Route planning web app</h3>
+              <p>LIKELION US hackathon: real-time route optimization with the Google Maps and Directions APIs, deployed on AWS with MongoDB.</p>
+              <p class="stack"><span class="yr">2021</span>HTML, CSS, AWS, MongoDB</p>
+            </li>
+          </ul>
+          <p class="coursework">Also from coursework:
+            <a href="https://github.com/leejh0820/Enigma">Enigma simulator</a>,
+            <a href="https://github.com/leejh0820/Ngordnet-WordNet">NGordnet</a>,
+            <a href="https://github.com/leejh0820/2048Game">2048</a>,
+            <a href="https://github.com/leejh0820/Block-Puzzle">Block Puzzle</a>,
+            <a href="https://github.com/leejh0820/Typing-Test-Autocorrect">Typing test with autocorrect</a>,
+            <a href="https://github.com/leejh0820/Ants-vs-Bees">Ants vs. Bees</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="wrap grid">
+        <h2 id="skills-h" class="section-h">Tools</h2>
+        <dl class="section-body skills">
+          <div><dt>Robotics</dt><dd>ROS, Gazebo, RViz, gmapping, AMCL, move_base, map_merge, MuJoCo, Isaac Lab</dd></div>
+          <div><dt>RL and ML</dt><dd>DQN, PPO, SAC, TD-MPC2, DreamerV3, Stable-Baselines3, PyTorch, TensorFlow and Keras, scikit-learn</dd></div>
+          <div><dt>Languages</dt><dd>Python, C and C++, Java, SQL, JavaScript and TypeScript</dd></div>
+          <div><dt>Infrastructure</dt><dd>Linux, Docker, Git, shell scripting, HPC, Weights &amp; Biases, FastAPI</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="edu-h">
+      <div class="wrap grid">
+        <h2 id="edu-h" class="section-h">Education</h2>
+        <div class="section-body plain-list">
+          <div>
+            <h3>University of California, Berkeley</h3>
+            <p>B.A. in Data Science, domain in Applied Mathematics and Modeling, 2023.</p>
+            <p class="stack">Data Structures, Introduction to AI, Machine Learning, Data Engineering, Data Mining and Analytics, Principles and Techniques of Data Science, Linear Algebra, Nonlinear and Discrete Optimization, Signals and Systems</p>
+          </div>
+          <div>
+            <h3>Northwestern University, Modern Robotics</h3>
+            <p>Foundations of Robot Motion; Robot Kinematics.</p>
+          </div>
+          <div>
+            <h3>Outside class</h3>
+            <p>Advisor and internal chair of the KSEA UC Berkeley chapter (about 60 members), event chair for KOJOBS Berkeley's career fair (100+ students), and vice-captain of Berkeley Galacticos, which went unbeaten to win a campus league of 50+ teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact wrap" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Get in touch</h2>
+      <p>I'm looking for ML, research engineering and robotics roles. Email is the fastest way to reach me.</p>
+      <a class="big-mail" href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>Jeonghyun Lee</span>
+    <span>Updated October 2026</span>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
 </html>
