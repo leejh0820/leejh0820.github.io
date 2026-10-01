@@ -112,8 +112,8 @@ p + p { margin-top: 0.9em; }
 /* Hero */
 .hero { padding-top: clamp(40px, 7vw, 96px); padding-bottom: clamp(56px, 8vw, 112px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(240px, 30vw, 360px); gap: clamp(28px, 5vw, 72px); align-items: center; }
-.hero h1 { font-size: clamp(48px, 7vw, 96px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.92; }
-.lede { margin-top: 26px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; color: var(--ink-2); max-width: 28em; }
+.hero h1 { font-size: clamp(38px, 4.8vw, 62px); font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+.lede { margin-top: 20px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; color: var(--ink-2); max-width: 28em; }
 .facts { margin-top: 14px; color: var(--muted); font-size: 16px; }
 .links { list-style: none; padding: 0; margin: 30px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .btn { display: inline-block; text-decoration: none; border: 1px solid var(--line-strong); padding: 9px 16px; border-radius: 999px; font-size: 15px; color: var(--ink); font-weight: 500; }
@@ -261,7 +261,7 @@ details .ticks { padding-bottom: 18px; }
 
 /* Contact */
 .contact p { color: var(--ink-2); max-width: 32em; }
-.big-mail { display: inline-block; margin-top: 16px; font-size: clamp(20px, 2.4vw, 26px); font-weight: 500; letter-spacing: -0.015em; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; word-break: break-all; }
+.big-mail { display: inline-block; margin-top: 12px; font-size: 18px; font-weight: 500; letter-spacing: -0.005em; text-decoration-thickness: 1px; text-underline-offset: 0.2em; word-break: break-all; }
 
 .foot { display: flex; justify-content: space-between; gap: 16px; padding-top: 24px; padding-bottom: 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
 
