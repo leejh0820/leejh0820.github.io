@@ -5,8 +5,7 @@
   var root = document.documentElement;
   var themeBtn = document.querySelector('.theme');
   function currentTheme() {
-    if (root.dataset.theme) return root.dataset.theme;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return root.dataset.theme === 'light' ? 'light' : 'dark';
   }
   themeBtn.addEventListener('click', function () {
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
@@ -14,7 +13,6 @@
     try { localStorage.setItem('theme', next); } catch (e) {}
     themeChanged();
   });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { themeChanged(); });
 
   /* ---------- Top bar ---------- */
   var bar = document.querySelector('.bar');

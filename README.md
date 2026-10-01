@@ -8,9 +8,10 @@ Live at **[leejh0820.github.io](https://leejh0820.github.io)**
 
 ```
 index.html      page content
-style.css       layout, light and dark themes
+style.css       layout, dark (default) and light themes
 main.js         theme toggle and the frontier-exploration demo in the header
 img/            figures from the ETRI, PPO navigation and HumanoidBench work
+resume/         résumé PDF linked from the header
 fonts/          Schibsted Grotesk (SIL Open Font License, see fonts/OFL.txt)
 ```
 
