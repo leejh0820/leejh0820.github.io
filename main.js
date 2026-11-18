@@ -11,7 +11,7 @@
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) {}
-    themeChanged();
+    if (canvas) themeChanged();
   });
 
   /* ---------- Top bar ---------- */
@@ -19,21 +19,6 @@
   function onScroll() { bar.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.bar nav a'));
-  if ('IntersectionObserver' in window) {
-    var sectionObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        navLinks.forEach(function (a) {
-          a.setAttribute('aria-current', a.getAttribute('href') === '#' + en.target.id ? 'true' : 'false');
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    ['work', 'experience', 'projects', 'contact'].forEach(function (id) {
-      var el = document.getElementById(id); if (el) sectionObs.observe(el);
-    });
-  }
 
   /* ---------- Exploration demo ---------- */
   var canvas = document.getElementById('map');

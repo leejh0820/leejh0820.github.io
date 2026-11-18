@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reproducing HumanoidBench | Jeonghyun Lee</title>
+  <meta name="description" content="Jeonghyun Lee, ML engineer. Reinforcement learning for robots, multi-robot SLAM and exploration, and LLM evaluation. UC Berkeley Data Science, 2023.">
+  <meta property="og:title" content="Reproducing HumanoidBench | Jeonghyun Lee">
+  <meta property="og:description" content="Reinforcement learning for robots, multi-robot exploration, and LLM evaluation.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://leejh0820.github.io/writing/humanoidbench/">
+  <meta name="theme-color" content="#121418">
+  <link rel="canonical" href="https://leejh0820.github.io/writing/humanoidbench/">
+  <link rel="icon" href="../../icon.svg?v=2" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=2">
+  <link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../style.css?v=work-toc">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeonghyun Lee",
+    "jobTitle": "Machine Learning Engineer",
+    "url": "https://leejh0820.github.io/",
+    "email": "mailto:jeonghyun@berkeley.edu",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
+    "knowsAbout": ["Reinforcement learning", "Robotics", "Multi-robot SLAM", "ROS", "LLM evaluation", "PyTorch"],
+    "knowsLanguage": ["Korean", "English"],
+    "sameAs": ["https://github.com/leejh0820", "https://www.linkedin.com/in/jeonghyunlee/"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <a class="wordmark" href="../../">Jeonghyun Lee</a>
+      <nav aria-label="Main navigation">
+        <a href="../../">Home</a>
+        <a href="../../work/">Work</a>
+        <a href="../../writing/" aria-current="page">Writing</a>
+        <a href="../../about/">About</a>
+      </nav>
+      <a class="nav-cta" href="../../resume/JeonghyunLee_Resume_EN.pdf">Résumé</a>
+      <button class="theme" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="wrap writing-layout">
+      <p class="article-back"><a href="../../writing/">← All writing</a></p>
+      <header class="page-intro article-intro"><p class="post-type">Reproduction</p><h1>Reproducing HumanoidBench</h1></header>
+          <article class="case" id="humanoid">
+            <header class="case-head">
+              <dl class="meta">
+                <div><dt>Where</dt><dd>ModuLabs Humanoid Robot Lab</dd></div>
+                <div><dt>When</dt><dd>Apr 2026</dd></div>
+                <div><dt>Stack</dt><dd>MuJoCo, Colab A100, Weights &amp; Biases</dd></div>
+                <div><dt>Paper</dt><dd><a href="https://arxiv.org/abs/2403.10506">arXiv:2403.10506</a></dd></div>
+              </dl>
+            </header>
+            <p>I trained SAC, PPO, TD-MPC2 and DreamerV3 on the Unitree H1 walking task (h1-walk) and compared the results with the paper.</p>
+
+            <figure class="wide">
+              <img src="../../img/humanoid-rollout.webp" alt="Four frames of the simulated H1 humanoid: lying on the ground, kneeling, then standing and walking" loading="lazy" width="1800" height="594">
+              <figcaption>SAC policy rollouts at 0.5M, 1M, 1.5M and 2M steps: from falling over to upright walking.</figcaption>
+            </figure>
+
+            <div class="table-wrap">
+              <table>
+                <caption>h1-walk episode return</caption>
+                <thead><tr><th scope="col">Algorithm</th><th scope="col">Obs / action</th><th scope="col">Seeds</th><th scope="col">My best</th><th scope="col">Paper average</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>DreamerV3</td><td>151D / 61D (paper default)</td><td>1</td><td>854.2</td><td>800.2</td></tr>
+                  <tr><td>TD-MPC2</td><td>51D / 19D</td><td>1</td><td>805.6</td><td>782.0</td></tr>
+                  <tr><td>SAC</td><td>51D / 19D</td><td>3</td><td>575.3</td><td>31.7</td></tr>
+                  <tr><td>PPO</td><td>51D / 19D</td><td>3</td><td>14.6</td><td>near zero</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>The SAC number that didn't make sense</h4>
+            <p>My SAC run scored about 18 times the paper's. Tracing it back, TD-MPC2, SAC and PPO had run on a simplified environment without hands (51D / 19D), while the paper's default includes hands (151D / 61D). The paper's own figure shows walking return changing several-fold with and without hands, so the gap is task difficulty, not the algorithm. Only DreamerV3 is a like-for-like comparison.</p>
+            <p>DreamerV3 peaked at 854 against the paper's 800 average, on a single seed, and its return then fell to 233 late in training. I haven't explained that drop yet. The broader ranking matched the paper: model-based methods ahead of model-free, PPO last.</p>
+
+            <details>
+              <summary>Constraints and next steps</summary>
+              <ul class="ticks">
+                <li>Colab killed sessions it thought were idle during long subprocess runs; a thread that logs every 30 seconds kept them alive.</li>
+                <li>TD-MPC2 crashed when compute quota ran out, with no way to resume, so only seed 0 finished.</li>
+                <li>Each algorithm reports reward differently, so I analyze them separately rather than on one chart.</li>
+                <li>Next: rerun SAC, PPO and TD-MPC2 with hands (151D) for a fair comparison, and add DreamerV3 seeds to get a mean and variance and find the cause of the late drop.</li>
+              </ul>
+            </details>
+          </article>
+      <p><a href="../../work/#humanoid">View project →</a></p>
+    </div>
+  </main>
+
+  <footer class="wrap foot">
+    <span>Jeonghyun Lee</span>
+    <span>Updated October 2026</span>
+  </footer>
+
+  <script src="../../main.js?v=pages-preview" defer></script>
+</body>
+</html>
