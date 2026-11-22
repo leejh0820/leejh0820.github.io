@@ -1,0 +1,112 @@
+---
+layout: default
+lang: ko
+translation_key: about
+section: About
+title: 소개
+---
+<header class="wrap page-intro">
+      <h1>소개</h1>
+      <ul class="links">
+        <li><a class="btn btn-solid" href="{{ '/resume/JeonghyunLee_Resume_EN.pdf' | relative_url }}">이력서 (영문)</a></li>
+        <li><a class="btn btn-solid-alt" href="{{ '/resume/JeonghyunLee_Resume_KO.pdf' | relative_url }}" lang="ko">이력서 (한국어)</a></li>
+      </ul>
+    </header>
+    <section class="section" id="experience" aria-labelledby="exp-h">
+      <div class="wrap grid">
+        <h2 id="exp-h" class="section-h">경력</h2>
+        <ol class="section-body timeline">
+          <li>
+            <span class="when">2026년 5월 – 현재</span>
+            <div>
+              <h3>Alignerr <span class="role">머신러닝 소프트웨어 엔지니어 · 모델 평가와 벤치마크 설계</span></h3>
+              <p>프런티어 LLM을 대상으로 로보틱스·다중 로봇 머신러닝 벤치마크를 설계했습니다. 과제 명세, 평가 데이터와 참조 풀이를 만들고, 추론 능력·분야 이해·지시 이행을 측정할 수 있는 채점 기준을 정했습니다.</p>
+            </div>
+          </li>
+          <li class="quiet">
+            <span class="when">2024년 9월 – 2026년 5월</span>
+            <div>
+              <h3>병역 <span class="role">대한민국</span></h3>
+            </div>
+          </li>
+          <li>
+            <span class="when">2024년 8–9월</span>
+            <div>
+              <h3>숭실대학교 <span class="role">AI 엔지니어 · LLM 문서 처리와 업무 자동화</span></h3>
+              <p>Make와 Google Apps Script로 이벤트 기반 문서 처리 워크플로를 구축했습니다. Notion이나 Google Drive에 업로드한 PDF를 텍스트로 변환하고, OpenAI API로 영수증 항목을 추출한 뒤 Gmail에서 후속 이메일을 자동 작성·발송하도록 연결했습니다.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2024년 1–8월</span>
+            <div>
+              <h3>Outlier (Scale AI) <span class="role">AI 학습 전문가 · 코드 생성과 소프트웨어 엔지니어링 평가</span></h3>
+              <p>실제 Pandas·Koalas·PySpark 이슈에 대해 LLM이 생성한 패치를 평가하고 순위를 매겼습니다. 체계적인 기술 평가 기준에 따라 타입 호환성, 인덱싱 동작, 경계 사례, 하위 호환성과 회귀 위험을 검토했습니다.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2023년 7–8월</span>
+            <div>
+              <h3>ETRI <span class="role">머신러닝 엔지니어 인턴 · 다중 로봇 SLAM과 강화학습</span></h3>
+              <p>TurtleBot3 4대의 다중 로봇 탐색 환경과 DQN 에이전트를 구현했습니다. <a href="{{ '/ko/work/#etri' | relative_url }}">프로젝트 자세히 보기.</a></p>
+            </div>
+          </li>
+          <li id="exp-climformatics">
+            <span class="when">2022년 9–12월</span>
+            <div>
+              <h3>Climformatics <span class="role">머신러닝 엔지니어 인턴 · 기후 데이터와 시뮬레이션</span></h3>
+              <p>Sabalcore HPC 클러스터에서 NCAR CESM2의 다차원 NetCDF 데이터를 처리했습니다. NCO·NCL과 셸·PBS 작업을 연결해 Beaufort Gyre 과거 앙상블 11개를 분석하고, 해빙 농도·두께·알베도를 추출했습니다.</p>
+              <p>해빙 두께 예측 MSE를 58.4% 줄였습니다 (0.250 → 0.104). 선형 회귀·의사결정 트리와 비교한 뒤, 북극 알베도와 해빙 특징 8년치로 트리 20개의 랜덤 포레스트를 학습했습니다. 2022년 12월 UC Berkeley Discovery Symposium에서 발표했습니다.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2022년 1–5월</span>
+            <div>
+              <h3>UC Berkeley D-Lab <span class="role">소프트웨어 엔지니어 인턴 · 역사 문헌 처리와 연결 데이터</span></h3>
+              <p>Drehem 수메르 문헌 약 15,000건을 구조화된 텍스트 분석과 네트워크 분석에 활용할 수 있도록 처리했습니다. 정규식과 규칙 기반 추출로 직업·거래 역할·가족관계를 파악하고, ORACC·CDLI·FactGrid·Wikidata에 걸쳐 BDTNS 메타데이터를 매핑해 LOD Tablet Dictionary에 기여했습니다.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="wrap grid">
+        <h2 id="skills-h" class="section-h">사용하는 기술</h2>
+        <dl class="section-body skills">
+          <div><dt>프로그래밍 언어</dt><dd>Python, C and C++, Java, SQL, JavaScript, R, MATLAB, Swift</dd></div>
+          <div><dt>머신러닝과 데이터</dt><dd>PyTorch, TensorFlow, Keras, scikit-learn, Stable-Baselines3, pandas, NumPy, SciPy, Matplotlib, xarray</dd></div>
+          <div><dt>강화학습</dt><dd>DQN, PPO, SAC, TD-MPC2, DreamerV3</dd></div>
+          <div><dt>로보틱스와 시스템</dt><dd>ROS, Gazebo, RViz, gmapping, move_base, map_merge, MuJoCo, Isaac Lab, Linux, Docker, Git, shell</dd></div>
+          <div><dt>데이터와 인프라</dt><dd>HPC, PBS, NetCDF, NCO, NCL, Jupyter, MongoDB, MySQL, Supabase</dd></div>
+          <div><dt>백엔드와 자동화</dt><dd>FastAPI, Flask, Node.js, OpenAI API, Gemini, Make, Google Apps Script, AWS</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section class="section" id="education" aria-labelledby="edu-h">
+      <div class="wrap grid">
+        <h2 id="edu-h" class="section-h">학력</h2>
+        <div class="section-body plain-list">
+          <div>
+            <h3>University of California, Berkeley</h3>
+            <p>2023년 12월 데이터사이언스 학사 (B.A.)를 취득했습니다. 세부 분야는 응용수학 및 모델링입니다.</p>
+            <p class="stack">자료구조, 인공지능 개론, 머신러닝, 데이터 엔지니어링, 데이터 마이닝과 분석, 데이터사이언스 원리와 기법, 데이터사이언스를 위한 확률, 선형대수, 비선형·이산 최적화, 신호와 시스템, 객체지향 프로그래밍</p>
+          </div>
+          <div>
+            <h3>Northwestern University, Modern Robotics</h3>
+            <p>Modern Robotics 과정에서 강체 운동, 구성 공간과 스크루 이론을 공부했습니다. 기구학 과정에서는 순기구학·역기구학과 자코비안을 다뤘습니다.</p>
+          </div>
+          <div>
+            <h3>교외 활동</h3>
+            <p>KSEA UC Berkeley 지부 (약 60명)의 고문·내무부장, KOJOBS Berkeley 취업 박람회 (학생 100명 이상)의 행사 담당을 맡았습니다. 교내 50개 이상 팀이 참가한 리그에서 무패 우승한 Berkeley Galacticos의 부주장으로 활동했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap grid">
+        <h2 id="contact-h" class="section-h">연락처</h2>
+        <div class="section-body">
+          <p>머신러닝·리서치 엔지니어링·로보틱스 분야의 기회를 찾고 있습니다. 이메일로 편하게 연락해 주세요.</p>
+          <a class="big-mail" href="mailto:jeonghyun@berkeley.edu">jeonghyun@berkeley.edu</a>
+        </div>
+      </div>
+    </section>

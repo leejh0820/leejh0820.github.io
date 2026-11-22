@@ -1,6 +1,17 @@
 (function () {
   'use strict';
 
+  /* ---------- Language preference ---------- */
+  var languageSwitch = document.querySelector('[data-language-switch]');
+  if (languageSwitch) {
+    languageSwitch.addEventListener('click', function () {
+      try { localStorage.setItem('language', languageSwitch.dataset.languageSwitch); } catch (e) {}
+      if (window.location.hash) {
+        languageSwitch.href = languageSwitch.href.split('#')[0] + window.location.hash;
+      }
+    });
+  }
+
   /* ---------- Theme ---------- */
   var root = document.documentElement;
   var themeBtn = document.querySelector('.theme');
@@ -180,7 +191,7 @@
   function updateCoverage() {
     var pct = Math.min(100, Math.round((knownFree / reachable) * 100));
     if (done) pct = Math.max(pct, 100);
-    coverageOut.textContent = pct + '% mapped in ' + step + ' steps';
+    coverageOut.textContent = root.lang === 'ko' ? step + '단계 · ' + pct + '% 탐색' : pct + '% mapped in ' + step + ' steps';
   }
 
   /* Drawing */

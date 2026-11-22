@@ -1,0 +1,40 @@
+en:
+  name: Jeonghyun Lee
+  home: Home
+  work: Work
+  writing: Writing
+  about: About
+  resume: Résumé
+  resume_file: EN
+  skip: Skip to content
+  nav: Main navigation
+  theme: Switch color theme
+  all_writing: All writing
+  notes: Notes
+  published: Published
+  updated: Updated
+  where: Where
+  experiment: Experiment
+  stack: Stack
+  project: View project
+  description: Reinforcement learning for robots, multi-robot exploration, and LLM evaluation.
+ko:
+  name: 이정현
+  home: 홈
+  work: 프로젝트
+  writing: 블로그
+  about: 소개
+  resume: 이력서
+  resume_file: KO
+  skip: 본문으로 건너뛰기
+  nav: 주요 메뉴
+  theme: 화면 테마 전환
+  all_writing: 블로그 목록
+  notes: 기록
+  published: 발행일
+  updated: 수정일
+  where: 소속
+  experiment: 실험 시기
+  stack: 사용 기술
+  project: 프로젝트 보기
+  description: 로봇 강화학습, 다중 로봇 탐색, LLM 평가를 연구하고 구현합니다.

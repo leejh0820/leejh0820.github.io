@@ -1,0 +1,25 @@
+---
+layout: default
+section: Writing
+---
+{% include language.html %}
+<div class="wrap writing-layout">
+  <p class="article-back"><a href="{{ prefix | append: '/writing/' | relative_url }}">← {{ ui.all_writing }}</a></p>
+  <header class="page-intro article-intro">
+    <p class="post-type">{{ page.kind | default: ui.notes | escape }}</p>
+    <h1>{{ page.title | escape }}</h1>
+  </header>
+  <article class="case article-prose">
+    <header class="case-head">
+      <dl class="meta">
+        <div><dt>{{ ui.published }}</dt><dd><time datetime="{{ page.date | date_to_xmlschema }}">{% if language == "ko" %}{{ page.date | date: "%Y년 %-m월 %-d일" }}{% else %}{{ page.date | date: "%b %-d, %Y" }}{% endif %}</time></dd></div>
+        {% if page.updated %}<div><dt>{{ ui.updated }}</dt><dd>{% if language == "ko" %}{{ page.updated | date: "%Y년 %-m월 %-d일" }}{% else %}{{ page.updated | date: "%b %-d, %Y" }}{% endif %}</dd></div>{% endif %}
+        {% if page.where %}<div><dt>{{ ui.where }}</dt><dd>{{ page.where | escape }}</dd></div>{% endif %}
+        {% if page.experiment %}<div><dt>{{ ui.experiment }}</dt><dd>{{ page.experiment | escape }}</dd></div>{% endif %}
+        {% if page.stack %}<div><dt>{{ ui.stack }}</dt><dd>{{ page.stack | escape }}</dd></div>{% endif %}
+      </dl>
+    </header>
+    {{ content }}
+  </article>
+  {% if page.project_url %}<p><a href="{{ page.project_url | relative_url }}">{{ ui.project }} →</a></p>{% endif %}
+</div>

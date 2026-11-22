@@ -1,0 +1,78 @@
+{% include language.html %}
+<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ ui.name | escape }}</title>
+  <meta name="description" content="{{ page.description | default: ui.description | escape }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: ui.description | escape }}">
+  <meta property="og:type" content="{% if page.layout == "post" %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="theme-color" content="#121418">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="{{ language }}" href="{{ page.url | absolute_url }}">
+  {% if counterpart %}<link rel="alternate" hreflang="{{ peer_language }}" href="{{ counterpart.url | absolute_url }}">{% endif %}
+  <script>
+    try {
+      if (location.pathname === {{ '/' | relative_url | jsonify }} && localStorage.getItem('language') === 'ko') {
+        location.replace({{ '/ko/' | relative_url | jsonify }} + location.search + location.hash);
+      }
+    } catch (e) {}
+  </script>
+  <link rel="icon" href="{{ '/icon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <link rel="preload" href="{{ '/fonts/schibsted-grotesk-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {% if language == 'ko' %}<link rel="preload" href="{{ '/fonts/suit-variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>{% endif %}
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=suit-default">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeonghyun Lee",
+    "jobTitle": "Machine Learning Engineer",
+    "url": "https://leejh0820.github.io/",
+    "email": "mailto:jeonghyun@berkeley.edu",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
+    "knowsAbout": ["Reinforcement learning", "Robotics", "Multi-robot SLAM", "ROS", "LLM evaluation", "PyTorch"],
+    "knowsLanguage": ["Korean", "English"],
+    "sameAs": ["https://github.com/leejh0820", "https://www.linkedin.com/in/jeonghyunlee/"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">{{ ui.skip }}</a>
+
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <a class="wordmark" href="{{ prefix | append: '/' | relative_url }}">{{ ui.name }}</a>
+      <nav aria-label="{{ ui.nav }}">
+        <a href="{{ prefix | append: '/' | relative_url }}"{% if page.section == "Home" %} aria-current="page"{% endif %}>{{ ui.home }}</a>
+        <a href="{{ prefix | append: '/work/' | relative_url }}"{% if page.section == "Work" %} aria-current="page"{% endif %}>{{ ui.work }}</a>
+        <a href="{{ prefix | append: '/writing/' | relative_url }}"{% if page.section == "Writing" %} aria-current="page"{% endif %}>{{ ui.writing }}</a>
+        <a href="{{ prefix | append: '/about/' | relative_url }}"{% if page.section == "About" %} aria-current="page"{% endif %}>{{ ui.about }}</a>
+      </nav>
+      <a class="nav-cta" href="{{ '/resume/JeonghyunLee_Resume_' | append: ui.resume_file | append: '.pdf' | relative_url }}">{{ ui.resume }}</a>
+      {% if counterpart %}
+      <a class="language-toggle" href="{{ counterpart.url | relative_url }}" data-language-switch="{{ peer_language }}" lang="{{ peer_language }}" hreflang="{{ peer_language }}" aria-label="{% if language == 'ko' %}Read this page in English{% else %}이 페이지를 한국어로 보기{% endif %}">{% if language == 'ko' %}EN{% else %}한국어{% endif %}</a>
+      {% endif %}
+      <button class="theme" type="button" aria-label="{{ ui.theme }}" title="{{ ui.theme }}">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+{{ content }}
+</main>
+<footer class="wrap foot">
+    <span>{{ ui.name }}</span>
+    <span>{% if page.updated %}{{ ui.updated }} {{ page.updated | date: "%Y-%m-%d" }}{% else %}{% if language == "ko" %}2026년 10월 업데이트{% else %}Updated October 2026{% endif %}{% endif %}</span>
+  </footer>
+  <script src="{{ '/main.js' | relative_url }}?v=suit-default" defer></script>
+</body>
+</html>

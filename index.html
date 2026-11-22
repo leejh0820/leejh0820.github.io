@@ -1,67 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jeonghyun Lee</title>
-  <meta name="description" content="Jeonghyun Lee, ML engineer. Reinforcement learning for robots, multi-robot SLAM and exploration, and LLM evaluation. UC Berkeley Data Science, 2023.">
-  <meta property="og:title" content="Jeonghyun Lee">
-  <meta property="og:description" content="Reinforcement learning for robots, multi-robot exploration, and LLM evaluation.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://leejh0820.github.io/">
-  <meta name="theme-color" content="#121418">
-  <link rel="canonical" href="https://leejh0820.github.io/">
-  <link rel="icon" href="./icon.svg?v=2" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2">
-  <link rel="preload" href="./fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=work-toc">
-  <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jeonghyun Lee",
-    "jobTitle": "Machine Learning Engineer",
-    "url": "https://leejh0820.github.io/",
-    "email": "mailto:jeonghyun@berkeley.edu",
-    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
-    "knowsAbout": ["Reinforcement learning", "Robotics", "Multi-robot SLAM", "ROS", "LLM evaluation", "PyTorch"],
-    "knowsLanguage": ["Korean", "English"],
-    "sameAs": ["https://github.com/leejh0820", "https://www.linkedin.com/in/jeonghyunlee/"]
-  }
-  </script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="bar">
-    <div class="wrap bar-inner">
-      <a class="wordmark" href="./">Jeonghyun Lee</a>
-      <nav aria-label="Main navigation">
-        <a href="./" aria-current="page">Home</a>
-        <a href="./work/">Work</a>
-        <a href="./writing/">Writing</a>
-        <a href="./about/">About</a>
-      </nav>
-      <a class="nav-cta" href="./resume/JeonghyunLee_Resume_EN.pdf">Résumé</a>
-      <button class="theme" type="button" aria-label="Switch color theme" title="Switch color theme">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero wrap" id="top" aria-label="Introduction">
+---
+layout: default
+lang: en
+translation_key: home
+section: Home
+---
+<section class="hero wrap" id="top" aria-label="Introduction">
       <div class="hero-grid">
         <div class="hero-text">
           <h1>Jeonghyun Lee</h1>
           <p class="lede">ML engineer working on reinforcement learning for robots, multi-robot exploration, and the evaluation work that shows whether a model actually got better.</p>
           <p class="facts">UC Berkeley Data Science, December 2023. Based in Jeju, South Korea.</p>
           <ul class="links">
-            <li><a class="btn btn-solid" href="./resume/JeonghyunLee_Resume_EN.pdf">Résumé (English)</a></li>
-            <li><a class="btn btn-solid-alt" href="./resume/JeonghyunLee_Resume_KO.pdf" lang="ko">이력서 (한국어)</a></li>
+            <li><a class="btn btn-solid" href="{{ '/resume/JeonghyunLee_Resume_EN.pdf' | relative_url }}">Résumé (English)</a></li>
+            <li><a class="btn btn-solid-alt" href="{{ '/resume/JeonghyunLee_Resume_KO.pdf' | relative_url }}" lang="ko">이력서 (한국어)</a></li>
           </ul>
           <ul class="links links-quiet">
             <li><a href="mailto:jeonghyun@berkeley.edu">Email</a></li>
@@ -89,31 +40,24 @@
     <section class="wrap home-block" aria-labelledby="home-work">
       <h2 class="home-heading" id="home-work">Selected work</h2>
       <div class="home-previews">
-        <a class="home-project" href="./work/#etri">
+        <a class="home-project" href="{{ '/work/#etri' | relative_url }}">
           <h3>Multi-robot SLAM and reinforcement learning exploration</h3>
-          <img src="./img/etri-rviz.webp" alt="Four robots exploring in RViz" width="889" height="918">
+          <img src="{{ '/img/etri-rviz.webp' | relative_url }}" alt="Four robots exploring in RViz" width="889" height="918">
         </a>
-        <a class="home-project" href="./work/#released-apps">
+        <a class="home-project" href="{{ '/work/#released-apps' | relative_url }}">
           <h3><span lang="ko">런디</span> (Rundi)</h3>
           <p class="home-project-description">An iPhone app that visualizes Apple Health runs as a yearly activity calendar.</p>
           <div class="home-app-art">
-            <img class="home-app-icon" src="./img/apps/rundi-icon.webp" alt="" width="200" height="200">
-            <img src="./img/apps/rundi-screen-1.webp" alt="Rundi yearly running activity calendar" width="300" height="652">
+            <img class="home-app-icon" src="{{ '/img/apps/rundi-icon.webp' | relative_url }}" alt="" width="200" height="200">
+            <img src="{{ '/img/apps/rundi-screen-1.webp' | relative_url }}" alt="Rundi yearly running activity calendar" width="300" height="652">
           </div>
         </a>
       </div>
     </section>
     <section class="wrap home-block" aria-labelledby="home-writing">
       <h2 class="home-heading" id="home-writing">Latest writing</h2>
-      <a class="home-post" href="./writing/humanoidbench/">Reproducing HumanoidBench <span aria-hidden="true">→</span></a>
+      {% assign language_posts = site.posts | where: 'lang', page.lang %}
+      {% for post in language_posts limit: 3 %}
+      <a class="home-post" href="{{ post.url | relative_url }}">{{ post.title | escape }} <span aria-hidden="true">→</span></a>
+      {% endfor %}
     </section>
-  </main>
-
-  <footer class="wrap foot">
-    <span>Jeonghyun Lee</span>
-    <span>Updated October 2026</span>
-  </footer>
-
-  <script src="./main.js?v=pages-preview" defer></script>
-</body>
-</html>

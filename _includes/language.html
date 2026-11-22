@@ -1,0 +1,16 @@
+{% assign language = page.lang | default: 'en' %}
+{% assign ui = site.data.ui[language] %}
+{% assign prefix = '' %}
+{% if language == 'ko' %}{% assign prefix = '/ko' %}{% endif %}
+{% assign peer_language = 'ko' %}
+{% if language == 'ko' %}{% assign peer_language = 'en' %}{% endif %}
+{% assign counterpart = nil %}
+{% if page.translation_key %}
+  {% assign documents = site.pages | concat: site.posts %}
+  {% for document in documents %}
+    {% if document.translation_key == page.translation_key and document.lang == peer_language %}
+      {% assign counterpart = document %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

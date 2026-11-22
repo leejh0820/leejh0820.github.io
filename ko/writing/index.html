@@ -1,0 +1,19 @@
+---
+layout: default
+lang: ko
+translation_key: writing
+title: 블로그
+section: Writing
+---
+<div class="wrap writing-layout">
+  <header class="page-intro"><h1>블로그</h1><p>로봇과 AI 논문을 읽고, 직접 구현하고 실험하며 배운 내용을 정리합니다.</p></header>
+  {% assign language_posts = site.posts | where: 'lang', page.lang %}
+  {% for post in language_posts %}
+  <article class="writing-entry">
+    <p class="post-type">{{ post.kind | default: "개발 기록" | escape }}</p>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    {% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}
+    <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %-m월 %-d일" }}</time>{% for tag in post.tags %} · {{ tag | escape }}{% endfor %}</p>
+  </article>
+  {% endfor %}
+</div>

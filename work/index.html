@@ -1,58 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work | Jeonghyun Lee</title>
-  <meta name="description" content="Jeonghyun Lee, ML engineer. Reinforcement learning for robots, multi-robot SLAM and exploration, and LLM evaluation. UC Berkeley Data Science, 2023.">
-  <meta property="og:title" content="Work | Jeonghyun Lee">
-  <meta property="og:description" content="Reinforcement learning for robots, multi-robot exploration, and LLM evaluation.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://leejh0820.github.io/work/">
-  <meta name="theme-color" content="#121418">
-  <link rel="canonical" href="https://leejh0820.github.io/work/">
-  <link rel="icon" href="../icon.svg?v=2" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=2">
-  <link rel="preload" href="../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=work-toc">
-  <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jeonghyun Lee",
-    "jobTitle": "Machine Learning Engineer",
-    "url": "https://leejh0820.github.io/",
-    "email": "mailto:jeonghyun@berkeley.edu",
-    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
-    "knowsAbout": ["Reinforcement learning", "Robotics", "Multi-robot SLAM", "ROS", "LLM evaluation", "PyTorch"],
-    "knowsLanguage": ["Korean", "English"],
-    "sameAs": ["https://github.com/leejh0820", "https://www.linkedin.com/in/jeonghyunlee/"]
-  }
-  </script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="bar">
-    <div class="wrap bar-inner">
-      <a class="wordmark" href="../">Jeonghyun Lee</a>
-      <nav aria-label="Main navigation">
-        <a href="../">Home</a>
-        <a href="../work/" aria-current="page">Work</a>
-        <a href="../writing/">Writing</a>
-        <a href="../about/">About</a>
-      </nav>
-      <a class="nav-cta" href="../resume/JeonghyunLee_Resume_EN.pdf">Résumé</a>
-      <button class="theme" type="button" aria-label="Switch color theme" title="Switch color theme">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
+---
+layout: default
+lang: en
+translation_key: work
+section: Work
+title: Work
+---
 <header class="wrap page-intro">
       <h1>Work</h1>
       <nav class="work-toc" aria-label="On this page">
@@ -91,11 +43,11 @@
 
             <div class="two-up">
               <figure>
-                <img src="../img/etri-world.webp" alt="Top-down view of the Gazebo floor plan with four TurtleBot3 robots in the center" loading="lazy" width="701" height="753">
+                <img src="{{ '/img/etri-world.webp' | relative_url }}" alt="Top-down view of the Gazebo floor plan with four TurtleBot3 robots in the center" loading="lazy" width="701" height="753">
                 <figcaption>The Gazebo world, modeled on a prior multi-robot mapping study.</figcaption>
               </figure>
               <figure>
-                <img src="../img/etri-rviz.webp" alt="RViz view of four robots growing RRT trees across a merged map" loading="lazy" width="889" height="918">
+                <img src="{{ '/img/etri-rviz.webp' | relative_url }}" alt="RViz view of four robots growing RRT trees across a merged map" loading="lazy" width="889" height="918">
                 <figcaption>RViz: four robots (red) growing RRT frontier trees over the merged map.</figcaption>
               </figure>
             </div>
@@ -125,11 +77,11 @@
 
             <div class="two-up">
               <figure>
-                <img src="../img/nav-ppo.webp" alt="PPO robot path curving around circular obstacles to the goal" loading="lazy" width="380" height="378">
+                <img src="{{ '/img/nav-ppo.webp' | relative_url }}" alt="PPO robot path curving around circular obstacles to the goal" loading="lazy" width="380" height="378">
                 <figcaption>PPO on the hard map: routes around the obstacles and reaches the goal.</figcaption>
               </figure>
               <figure>
-                <img src="../img/nav-baseline.webp" alt="Rule-based robot stopped among obstacles" loading="lazy" width="380" height="378">
+                <img src="{{ '/img/nav-baseline.webp' | relative_url }}" alt="Rule-based robot stopped among obstacles" loading="lazy" width="380" height="378">
                 <figcaption>Rule-based baseline on the same map: brakes and stalls.</figcaption>
               </figure>
             </div>
@@ -174,7 +126,7 @@
           <article class="case" id="humanoid">
             <header class="case-head"><h3>Reproducing HumanoidBench</h3></header>
             <p>I trained SAC, PPO, TD-MPC2 and DreamerV3 on the Unitree H1 walking task (h1-walk) and compared the results with the paper.</p>
-            <p><a href="../writing/humanoidbench/">Read the reproduction notes →</a></p>
+            <p><a href="{{ '/writing/humanoidbench/' | relative_url }}">Read the reproduction notes →</a></p>
           </article>
 
         </div>
@@ -186,24 +138,24 @@
         <ul class="section-body projects">
           <li>
             <header class="app-card-heading">
-              <img src="../img/apps/rundi-icon.webp" alt="" width="200" height="200" loading="lazy">
+              <img src="{{ '/img/apps/rundi-icon.webp' | relative_url }}" alt="" width="200" height="200" loading="lazy">
               <h3><span lang="ko">런디</span> (Rundi)</h3>
             </header>
             <div class="app-screenshots">
-              <img src="../img/apps/rundi-screen-1.webp" alt="Rundi yearly running activity calendar" width="300" height="652" loading="lazy">
-              <img src="../img/apps/rundi-screen-2.webp" alt="Rundi home screen widgets" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/rundi-screen-1.webp' | relative_url }}" alt="Rundi yearly running activity calendar" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/rundi-screen-2.webp' | relative_url }}" alt="Rundi home screen widgets" width="300" height="652" loading="lazy">
             </div>
             <p>Turns runs recorded in Apple Health into a yearly activity calendar and a home screen widget.</p>
             <p class="stack"><a href="https://apps.apple.com/kr/app/id6820807273" aria-label="View Rundi on the App Store">View on the App Store <span aria-hidden="true">↗</span></a></p>
           </li>
           <li>
             <header class="app-card-heading">
-              <img src="../img/apps/newslog-icon.webp" alt="" width="200" height="200" loading="lazy">
+              <img src="{{ '/img/apps/newslog-icon.webp' | relative_url }}" alt="" width="200" height="200" loading="lazy">
               <h3>Newslog</h3>
             </header>
             <div class="app-screenshots">
-              <img src="../img/apps/newslog-screen-1.webp" alt="Newslog article editor" width="300" height="652" loading="lazy">
-              <img src="../img/apps/newslog-screen-2.webp" alt="Newslog split-view transcription" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/newslog-screen-1.webp' | relative_url }}" alt="Newslog article editor" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/newslog-screen-2.webp' | relative_url }}" alt="Newslog split-view transcription" width="300" height="652" loading="lazy">
             </div>
             <p>A reading journal for transcribing news articles, saving quotes, and attaching sticky notes to each article.</p>
             <p class="stack"><a href="https://apps.apple.com/kr/app/newslog/id6832239699" aria-label="View Newslog on the App Store">View on the App Store <span aria-hidden="true">↗</span></a></p>
@@ -287,13 +239,3 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <footer class="wrap foot">
-    <span>Jeonghyun Lee</span>
-    <span>Updated October 2026</span>
-  </footer>
-
-  <script src="../main.js?v=pages-preview" defer></script>
-</body>
-</html>

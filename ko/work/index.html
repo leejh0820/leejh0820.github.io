@@ -1,0 +1,241 @@
+---
+layout: default
+lang: ko
+translation_key: work
+section: Work
+title: 프로젝트
+---
+<header class="wrap page-intro">
+      <h1>프로젝트</h1>
+      <nav class="work-toc" aria-label="페이지 목차">
+        <a href="#work">로보틱스</a>
+        <a href="#released-apps">출시한 앱</a>
+        <a href="#community">오픈소스 · 스터디</a>
+        <a href="#projects">기타 프로젝트</a>
+      </nav>
+    </header>
+    <section class="section" id="work" aria-labelledby="work-h">
+      <div class="wrap grid">
+        <h2 id="work-h" class="section-h">대표 프로젝트</h2>
+        <div class="section-body">
+
+          <article class="case" id="etri">
+            <header class="case-head">
+              <h3>다중 로봇 SLAM 및 강화학습 기반 탐색</h3>
+              <dl class="meta">
+                <div><dt>소속</dt><dd>ETRI 시각지능연구실</dd></div>
+                <div><dt>시기</dt><dd>2023년 7–8월</dd></div>
+                <div><dt>사용 기술</dt><dd>ROS Melodic, Gazebo, RViz, C++, Python, Keras</dd></div>
+              </dl>
+            </header>
+            <p>과학기술정보통신부 연구개발 과제 <em>AI Bots collaboration platform and self-organizing AI</em>에 참여했습니다. TurtleBot3 네 대가 함께 지도를 만들며 탐색하는 환경을 구축하고, 각 로봇의 탐색 행동을 DQN으로 학습했습니다. 2023년 12월 발행된 2차년도 중간 보고서에 참여 연구원으로 기재되어 있습니다.</p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>동일한 Gazebo 환경에서 측정한 지도 탐색률</caption>
+                <thead><tr><th scope="col">설정</th><th scope="col">측정 시점</th><th scope="col">탐색률</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>DQN 에이전트 1개 → 4개</td><td>5분</td><td>~51% → ~94%</td></tr>
+                  <tr><td>로봇 1대, DQN과 RRT 비교</td><td>10분</td><td>~78% vs. ~64%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="two-up">
+              <figure>
+                <img src="{{ '/img/etri-world.webp' | relative_url }}" alt="TurtleBot3 네 대가 중앙에 있는 Gazebo 환경의 평면도" loading="lazy" width="701" height="753">
+                <figcaption>기존 다중 로봇 지도 작성 연구를 참고해 만든 Gazebo 환경입니다.</figcaption>
+              </figure>
+              <figure>
+                <img src="{{ '/img/etri-rviz.webp' | relative_url }}" alt="로봇 네 대가 병합 지도 위에서 RRT 트리를 확장하는 RViz 화면" loading="lazy" width="889" height="918">
+                <figcaption>RViz에서 빨간색 로봇 4대가 병합 지도 위에 RRT 프런티어 트리를 확장하는 모습입니다.</figcaption>
+              </figure>
+            </div>
+
+            <h4>구현한 내용</h4>
+            <ul class="ticks">
+              <li>로봇별 네임스페이스와 TF 트리를 분리하고, gmapping·move_base·map_merge를 연결한 TurtleBot3 4대의 ROS/Gazebo 환경을 구축했습니다.</li>
+              <li>C++ 전역·지역 RRT 프런티어 탐지기와 탐색 목표를 할당하는 Python 필터·할당 노드를 수정했습니다.</li>
+              <li>15도 간격의 희소 LiDAR 샘플링으로 발생한 “Scan matching failed” 오류를 해결했습니다. 관측을 24개에서 360개로, 상태 차원을 28에서 364로 늘려 DQN 학습 중에도 SLAM을 실행했습니다.</li>
+              <li>경험 재생, 타깃 네트워크, ε-greedy 탐색을 적용한 Keras DQN을 구현하고 보상과 목표를 설계해 3,000 에피소드를 학습했습니다. 로봇별 독립 에이전트가 실행되는 동안 지도를 실시간 병합했습니다.</li>
+              <li>로봇 자세·TF·LiDAR·프런티어·경로를 RViz로 시각화했습니다. ROS·SLAM·강화학습 관련 내부 발표 2회와 2023년 8월 30일 최종 발표를 진행했습니다.</li>
+            </ul>
+            <p class="note">학습 알고리즘 자체보다 시스템 설정, 토픽, TF와 지도 병합을 연결하는 데 더 많은 어려움이 있었습니다. 이 경험 이후에는 알고리즘에 앞서 환경부터 설계합니다.</p>
+          </article>
+
+          <article class="case" id="nav">
+            <header class="case-head">
+              <h3>PPO 기반 LiDAR 내비게이션</h3>
+              <dl class="meta">
+                <div><dt>소속</dt><dd>개인 프로젝트</dd></div>
+                <div><dt>시기</dt><dd>2026년 1월</dd></div>
+                <div><dt>사용 기술</dt><dd>Python, Gymnasium, Stable-Baselines3</dd></div>
+                <div><dt>코드</dt><dd><a href="https://github.com/leejh0820/RL-Robot-Navigation">RL-Robot-Navigation</a></dd></div>
+              </dl>
+            </header>
+            <p>장애물이 많아지면 규칙 기반 반응형 주행 로봇이 멈추는 문제가 있었습니다. 부분 LiDAR 관측으로 PPO 정책을 학습하고, 장애물 8개의 쉬운 지도와 12개의 어려운 지도에서 규칙 기반 베이스라인과 비교했습니다.</p>
+
+            <div class="two-up">
+              <figure>
+                <img src="{{ '/img/nav-ppo.webp' | relative_url }}" alt="PPO 로봇이 원형 장애물을 피해 목표로 이동한 경로" loading="lazy" width="380" height="378">
+                <figcaption>장애물 12개가 있는 지도에서 PPO가 목표까지 이동한 경로입니다.</figcaption>
+              </figure>
+              <figure>
+                <img src="{{ '/img/nav-baseline.webp' | relative_url }}" alt="규칙 기반 robot stopped among obstacles" loading="lazy" width="380" height="378">
+                <figcaption>같은 지도에서 규칙 기반 베이스라인은 감속한 뒤 멈췄습니다.</figcaption>
+              </figure>
+            </div>
+
+            <dl class="spec">
+              <div><dt>동역학</dt><dd>원형 로봇, 유니사이클 모델, 연속 제어 (v, ω)</dd></div>
+              <div><dt>관측</dt><dd>정규화한 LiDAR 광선 16개, 로봇 좌표계의 목표 위치, sin·cos로 표현한 방향 오차, 이전 행동</dd></div>
+              <div><dt>보상</dt><dd>목표 접근 보상, 목표 도달 보너스, 충돌·시간·과도한 회전 페널티</dd></div>
+              <div><dt>평가</dt><dd>250k 타임스텝 학습, 고정 시드와 결정론적 정책으로 200 에피소드 평가</dd></div>
+            </dl>
+
+            <div class="table-wrap">
+              <table>
+                <caption>200 에피소드 평가 결과</caption>
+                <thead><tr><th scope="col">지도</th><th scope="col">정책</th><th scope="col">성공률</th><th scope="col">충돌률</th><th scope="col">평균 스텝</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>쉬움</td><td>PPO</td><td>90.0%</td><td>0.0%</td><td>61.9</td></tr>
+                  <tr><td>쉬움</td><td>규칙 기반</td><td>0.5%</td><td>0.0%</td><td>248.8</td></tr>
+                  <tr class="hl"><td>어려움</td><td>PPO</td><td>86.5%</td><td>1.5%</td><td>65.9</td></tr>
+                  <tr><td>어려움</td><td>규칙 기반</td><td>0.0%</td><td>0.0%</td><td>250.0</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>보상 항목 제거 실험 (ablation)</h4>
+            <p>각 보상 항목을 하나씩 빼거나 약하게 바꿔 처음부터 학습했습니다. 평가 조건은 동일하게 맞췄습니다.</p>
+            <div class="table-wrap">
+              <table class="ab">
+                <caption>어려운 지도에서 설정별로 독립 학습한 결과</caption>
+                <thead><tr><th scope="col">보상</th><th scope="col">성공률</th><th scope="col">충돌률</th><th scope="col">평균 스텝</th></tr></thead>
+                <tbody>
+                  <tr class="hl"><td>전체 보상 (선택)</td><td>84.0%</td><td>0.5%</td><td>71.9</td></tr>
+                  <tr><td>목표 접근 보상 제거</td><td>91.5%</td><td>3.5%</td><td>51.7</td></tr>
+                  <tr><td>충돌 페널티 완화</td><td>90.5%</td><td>7.5%</td><td>43.1</td></tr>
+                  <tr><td>시간 페널티 제거</td><td>90.5%</td><td>2.5%</td><td>54.4</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>모든 ablation 설정에서 성공률은 올랐지만, 주행이 공격적으로 바뀌고 충돌도 늘었습니다. 사람과 실내 공간을 공유하는 로봇에서는 성공률의 소폭 향상보다 충돌률이 중요하다고 판단해 전체 보상 설정을 유지했습니다. ETRI에서는 이산 행동 DQN을 사용했고, 이번 프로젝트에서는 연속 제어와 평가 절차를 직접 구축하는 데 집중했습니다.</p>
+          </article>
+
+          <article class="case" id="humanoid">
+            <header class="case-head"><h3>HumanoidBench 리뷰와 보행 재현 실험</h3></header>
+            <p>Unitree H1 보행 과제에서 SAC, PPO, TD-MPC2, DreamerV3를 학습하고 논문의 결과와 비교했습니다.</p>
+            <p><a href="{{ '/ko/writing/humanoidbench/' | relative_url }}">실험 과정과 결과 읽기 →</a></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" id="released-apps" aria-labelledby="released-apps-h">
+      <div class="wrap grid">
+        <h2 id="released-apps-h" class="section-h">출시한 앱</h2>
+        <ul class="section-body projects">
+          <li>
+            <header class="app-card-heading">
+              <img src="{{ '/img/apps/rundi-icon.webp' | relative_url }}" alt="" width="200" height="200" loading="lazy">
+              <h3><span lang="ko">런디</span> (Rundi)</h3>
+            </header>
+            <div class="app-screenshots">
+              <img src="{{ '/img/apps/rundi-screen-1.webp' | relative_url }}" alt="런디의 연간 러닝 잔디" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/rundi-screen-2.webp' | relative_url }}" alt="런디 홈 화면 위젯" width="300" height="652" loading="lazy">
+            </div>
+            <p>달린 날이 잔디로 쌓이는 러닝 기록 앱입니다. Apple 건강에 저장된 기록을 모아 연간 잔디와 홈 화면 위젯으로 보여줍니다.</p>
+            <p class="stack"><a href="https://apps.apple.com/kr/app/id6820807273" aria-label="App Store에서 런디 보기">App Store에서 보기 <span aria-hidden="true">↗</span></a></p>
+          </li>
+          <li>
+            <header class="app-card-heading">
+              <img src="{{ '/img/apps/newslog-icon.webp' | relative_url }}" alt="" width="200" height="200" loading="lazy">
+              <h3>Newslog</h3>
+            </header>
+            <div class="app-screenshots">
+              <img src="{{ '/img/apps/newslog-screen-1.webp' | relative_url }}" alt="Newslog 기사 편집 화면" width="300" height="652" loading="lazy">
+              <img src="{{ '/img/apps/newslog-screen-2.webp' | relative_url }}" alt="Newslog 원문을 보며 옮겨 적는 화면" width="300" height="652" loading="lazy">
+            </div>
+            <p>뉴스 기사를 옮겨 적고 인용문을 저장하는 독서 기록 앱입니다. 기사마다 포스트잇을 붙여 생각을 남길 수 있습니다.</p>
+            <p class="stack"><a href="https://apps.apple.com/kr/app/newslog/id6832239699" aria-label="App Store에서 Newslog 보기">App Store에서 보기 <span aria-hidden="true">↗</span></a></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section" id="community" aria-labelledby="com-h">
+      <div class="wrap grid">
+        <h2 id="com-h" class="section-h">오픈소스 · 스터디</h2>
+        <ul class="section-body plain-list">
+          <li>
+            <h3>모두의연구소 휴머노이드 강화학습 스터디</h3>
+            <p>휴머노이드 강화학습 이론과 최신 논문을 함께 공부했습니다. MuJoCo 실습과 HumanoidBench 재현 실험도 진행했습니다.</p>
+          </li>
+          <li>
+            <h3><a href="https://wikidocs.net/book/18009">모두를 위한 휴머노이드 로봇</a></h3>
+            <p>Isaac Lab을 한국어로 배울 수 있는 위키독스 튜토리얼을 함께 쓰고 있습니다.</p>
+          </li>
+          <li>
+            <h3>awesome-humanoid-robot-learning</h3>
+            <p>휴머노이드 로봇 학습 논문을 모아 둔 오픈소스 목록에 기여했습니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section" id="projects" aria-labelledby="proj-h">
+      <div class="wrap grid">
+        <h2 id="proj-h" class="section-h">기타 프로젝트</h2>
+        <div class="section-body">
+          <ul class="projects">
+            <li>
+              <h3><a href="https://github.com/leejh0820/ai-news-pipeline">AI 일일 브리핑 파이프라인</a></h3>
+              <p>RSS와 Gmail 뉴스레터를 공통 스키마로 통합하고, FastAPI에서 유니코드를 정규화하고 추적 매개변수를 제거합니다. 최근 48시간의 항목을 대상으로 중복 URL과 거의 같은 제목을 걸러낸 뒤 토큰 예산에 맞춰 Gemini에 전달하면 HTML 요약 메일을 작성합니다. 시험 실행에서 항목 26개를 5개로 줄였고, 전처리는 단위 테스트 6개로 검증했습니다.</p>
+              <p class="stack"><span class="yr">2026</span>Python, FastAPI, Gemini, Make</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/korean-sentiment-analysis">한국어 음식점 리뷰 감성 분석</a></h3>
+              <p>한국어 음식점 리뷰에서 긍정과 부정을 분류했습니다. KR3 데이터로 TF-IDF·로지스틱 회귀, BiLSTM, KLUE-BERT 파인튜닝을 비교했습니다. BERT의 정확도는 91.5%, macro F1은 0.915였습니다. 부정 리뷰 재현율은 기존 두 모델의 0.57·0.66에서 0.86으로 올라, 정확도만 봤을 때 놓치던 차이를 확인했습니다.</p>
+              <p class="stack"><span class="yr">2025</span>PyTorch, Hugging Face Transformers</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/recruit-tracker-web">Recruit Tracker</a></h3>
+              <p>채용 공고 URL에서 회사·직무·지역·출처를 추출하고 업무와 자격 요건을 분리합니다. 대시보드에서 지원 현황을 관리하며 CSV 내보내기와 중복 경고를 지원합니다. <a href="https://github.com/leejh0820/recruit-tracker">Chrome 확장 프로그램</a>으로 LinkedIn·리멤버·원티드·사람인 공고를 수집합니다.</p>
+              <p class="stack"><span class="yr">2026</span>Next.js, TypeScript, FastAPI, SQLite</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Data-Engineering">건물 센서 데이터 파이프라인</a></h3>
+              <p>UC Berkeley 건물 센서 데이터 약 50만 행을 정리하고 조회하는 파이프라인을 만들었습니다. Hampel X84로 이상치를 찾고, 빠진 구간을 보간했습니다. 제각각인 센서 이름은 pg_trgm으로 연결하고 Brick 온톨로지에 질의했습니다. 같은 수업에서 Lahman 야구 데이터베이스의 쿼리 실행 계획도 분석했습니다.</p>
+              <p class="stack"><span class="yr">Data 101</span>PostgreSQL, Python, MongoDB</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Introduction-to-Artificial-Intelligence">팩맨 에이전트</a></h3>
+              <p>허용적 휴리스틱을 직접 설계한 탐색, minimax·expectimax, 가치 반복과 Q-learning을 구현했습니다. 잡음이 있는 거리 관측으로 유령의 위치를 추정하는 파티클 필터도 구현했습니다. 이는 로봇 위치 추정 기법인 AMCL의 기본 아이디어와도 연결됩니다.</p>
+              <p class="stack"><span class="yr">CS 188</span>Python</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Principles-and-Techniques-of-Data-Science">주택 가격 예측과 스팸 탐지</a></h3>
+              <p>Cook County 주택 가격 모델의 RMSE를 약 $310k에서 $255k로 낮추고, 모델 선택이 저가 주택의 과대평가에 미치는 영향을 분석했습니다. 스팸 분류에서는 기호 기반 특징을 추가해 단어 기반 기준 모델의 정확도 75.8%를 개선했습니다.</p>
+              <p class="stack"><span class="yr">Data 100</span>pandas, scikit-learn</p>
+            </li>
+            <li>
+              <h3><a href="https://github.com/leejh0820/Data-Mining-and-Analytics">유방암 분류</a></h3>
+              <p>Wisconsin 표본 569개에 SMOTE 오버샘플링과 KNN·SVM·랜덤 포레스트·나이브 베이즈·의사결정 트리의 소프트 보팅 앙상블을 적용했습니다. 정확도 95%, 악성 사례 재현율 94%를 달성했고 PCA로 특징 공간을 시각화했습니다.</p>
+              <p class="stack"><span class="yr">Data 144</span>scikit-learn</p>
+            </li>
+            <li>
+              <h3>경로 계획 웹 앱</h3>
+              <p>LIKELION US 해커톤에서 Google Maps·Directions API를 활용한 실시간 경로 최적화를 구현하고 MongoDB와 함께 AWS에 배포했습니다.</p>
+              <p class="stack"><span class="yr">2021</span>HTML, CSS, AWS, MongoDB</p>
+            </li>
+          </ul>
+          <p class="coursework">그 밖에 수업에서 만든 프로젝트:
+            <a href="https://github.com/leejh0820/Enigma">에니그마 시뮬레이터</a>,
+            <a href="https://github.com/leejh0820/Ngordnet-WordNet">NGordnet</a>,
+            <a href="https://github.com/leejh0820/2048Game">2048</a>,
+            <a href="https://github.com/leejh0820/Block-Puzzle">Block Puzzle</a>,
+            <a href="https://github.com/leejh0820/Typing-Test-Autocorrect">자동 교정 타이핑 테스트</a>,
+            <a href="https://github.com/leejh0820/Ants-vs-Bees">Ants vs. Bees</a>.
+          </p>
+        </div>
+      </div>
+    </section>

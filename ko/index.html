@@ -1,0 +1,63 @@
+---
+layout: default
+lang: ko
+translation_key: home
+section: Home
+---
+<section class="hero wrap" id="top" aria-label="자기소개">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>이정현</h1>
+          <p class="lede">로봇 강화학습과 다중 로봇 탐색을 구현하는 ML 엔지니어입니다. 모델의 성능이 실제로 개선됐는지 검증하는 평가 작업도 하고 있습니다.</p>
+          <p class="facts">UC Berkeley에서 데이터사이언스를 전공했습니다. 2023년 12월 졸업했으며, 현재 제주에 살고 있습니다.</p>
+          <ul class="links">
+            <li><a class="btn btn-solid" href="{{ '/resume/JeonghyunLee_Resume_EN.pdf' | relative_url }}">이력서 (영문)</a></li>
+            <li><a class="btn btn-solid-alt" href="{{ '/resume/JeonghyunLee_Resume_KO.pdf' | relative_url }}" lang="ko">이력서 (한국어)</a></li>
+          </ul>
+          <ul class="links links-quiet">
+            <li><a href="mailto:jeonghyun@berkeley.edu">이메일</a></li>
+            <li><a href="https://github.com/leejh0820">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/jeonghyunlee/">LinkedIn</a></li>
+          </ul>
+        </div>
+
+        <figure class="explorer" aria-labelledby="explorer-cap">
+          <div class="explorer-frame">
+            <canvas id="map" role="img" aria-label="시뮬레이션 로봇이 탐색하며 채워가는 점유 격자 지도"></canvas>
+          </div>
+          <div class="explorer-controls">
+            <div class="seg" role="radiogroup" aria-label="로봇 수">
+              <button type="button" role="radio" aria-checked="false" data-robots="1">로봇 1대</button>
+              <button type="button" role="radio" aria-checked="true" data-robots="4">로봇 4대</button>
+            </div>
+            <output id="coverage" aria-live="off">0% 탐색</output>
+            <button type="button" class="replay" id="replay">다시 보기</button>
+          </div>
+          <figcaption id="explorer-cap">ETRI에서 구축한 환경을 바탕으로, 점유 격자 지도에서의 프런티어 탐색을 브라우저로 재현했습니다.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="wrap home-block" aria-labelledby="home-work">
+      <h2 class="home-heading" id="home-work">대표 프로젝트</h2>
+      <div class="home-previews">
+        <a class="home-project" href="{{ '/ko/work/#etri' | relative_url }}">
+          <h3>다중 로봇 SLAM 및 강화학습 기반 탐색</h3>
+          <img src="{{ '/img/etri-rviz.webp' | relative_url }}" alt="RViz에서 탐색하는 로봇 네 대" width="889" height="918">
+        </a>
+        <a class="home-project" href="{{ '/ko/work/#released-apps' | relative_url }}">
+          <h3><span lang="ko">런디</span> (Rundi)</h3>
+          <p class="home-project-description">Apple 건강의 러닝 기록을 연간 잔디로 보여주는 iPhone 앱입니다.</p>
+          <div class="home-app-art">
+            <img class="home-app-icon" src="{{ '/img/apps/rundi-icon.webp' | relative_url }}" alt="" width="200" height="200">
+            <img src="{{ '/img/apps/rundi-screen-1.webp' | relative_url }}" alt="런디의 연간 러닝 잔디" width="300" height="652">
+          </div>
+        </a>
+      </div>
+    </section>
+    <section class="wrap home-block" aria-labelledby="home-writing">
+      <h2 class="home-heading" id="home-writing">최근 포스트</h2>
+      {% assign language_posts = site.posts | where: 'lang', page.lang %}
+      {% for post in language_posts limit: 3 %}
+      <a class="home-post" href="{{ post.url | relative_url }}">{{ post.title | escape }} <span aria-hidden="true">→</span></a>
+      {% endfor %}
+    </section>
